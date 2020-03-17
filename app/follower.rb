@@ -16,7 +16,11 @@ class Follower
     end
 
     def join_cult(cult, month, day, year)
-        BloodOath.new(month, day, year, cult, self)
+        if self.age > cult.minimum_age
+            BloodOath.new(month, day, year, cult, self)
+        else
+            "Sorry, you're too young to join this cult. You must be older than #{cult.minimum_age}."
+        end
     end
 
     def self.all
@@ -37,18 +41,17 @@ class Follower
 
     def self.top_ten
         # get the top ten followers who are in the most cults
+        
     end
 
     def fellow_cult_members
         oath_hold = []
-        cults.each do |cult|
-            oath_hold << BloodOath.all.select{|oath| oath.cult == cult}
+        cults.each do |cult_name|
+            oath_hold << BloodOath.all.select{|oath| oath.cult == cult_name}
         end
-        members = oath_hold.each do |oath|
-            oath.map(&:follower)
-        end
-        binding.pry
+        oath_hold.each {|oath| oath.map(&:follower)}
     end
 
-
 end
+
+

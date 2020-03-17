@@ -8,12 +8,8 @@ class BloodOath
         @day = day
         @year = year
         @cult = cult
-        if follower.age < cult.minimum_age
-            "Sorry, you're too young to join. The age restriction for this cult is #{cult.minimum_age} or older."
-        else 
-            @follower = follower
+        @follower = follower
         @@all << self
-        end
     end
 
     def self.all
@@ -25,8 +21,10 @@ class BloodOath
     end
 
     def self.first_oath
-        # get the oldest follower
-        BloodOath.all.select()
+        @@all.sort_by{|oath| oath.day}
+        @@all.sort_by{|oath| oath.month}
+        @@all.sort_by{|oath| oath.year}
+        @@all.first
     end
 
 end

@@ -29,6 +29,7 @@ jack.my_cults_slogans
 Follower.most_active
 Follower.top_ten
 jack.fellow_cult_members
+BloodOath.first_oath
 
 binding.pry
 
