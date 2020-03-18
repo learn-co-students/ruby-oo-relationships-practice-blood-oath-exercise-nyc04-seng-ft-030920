@@ -37,20 +37,15 @@ class Follower
         cults.map(&:slogan)
     end
 
-
     def self.most_active
-        self.all.sort_by {|follower| follower.cults.count}
-    end
-
-    def self.top_ten
         activity_array[0]
     end
 
-    def self.create_top_ten_list(unordered_array)
+    def self.top_ten
         top_list = activity_array.map.with_index do |follower, index|
             "#{index+1}. #{follower.name} - #{follower.cults.count}"
         end
-    top_list[0..9]
+        top_list[0..9]
     end
 
     private
