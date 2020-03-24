@@ -50,7 +50,7 @@ class Follower
     end
     
     def self.most_active
-        self.class.most_active.first
+        self.follower_activity_sort[0]
     end
 
     def fellow_cult_members
