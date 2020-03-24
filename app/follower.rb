@@ -35,13 +35,22 @@ class Follower
         cults.map(&:slogan)
     end
 
-    def self.most_active
-        # self.class.most_active.first
-    end
+    def self.follower_activity_sort
+        follower_activity = self.all.map do |follower|
+          {follower => follower.cults.length}
+        end
+        sorted_follower_activity = follower_activity.sort_by do |follower|
+          follower.values[0]
+        end
+        sorted_follower_activity.reverse
+     end
 
     def self.top_ten
-        # get the top ten followers who are in the most cults
-        
+        follower_activity_sort[0...9]
+    end
+    
+    def self.most_active
+        self.class.most_active.first
     end
 
     def fellow_cult_members

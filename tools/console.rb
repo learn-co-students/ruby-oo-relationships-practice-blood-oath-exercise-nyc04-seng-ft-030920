@@ -8,9 +8,12 @@ end
 # so they will be available to test and play around with in your console
 
 jack = Follower.new("Jack", 30, "YOLO")
+
 illuminati = Cult.new("Illuminati", "D.C.", 1923, "All seeing eye", 10)
 oath_a = BloodOath.new(12, 03, 1990, illuminati, jack)
+
 freemason = Cult.new("Freemason", "NYC", 1950, "Rocks", 25)
+oath_b = BloodOath.new(12, 03, 1990, freemason, jack)
 other_cult = Cult.new("Other Cult", "LA", 1999, "Nope.", 40)
 oath_a.initiation_date
 jack.join_cult(freemason, 11, 22, 1960)
